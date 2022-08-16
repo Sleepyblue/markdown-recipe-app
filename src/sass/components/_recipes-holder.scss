@@ -3,7 +3,31 @@
   height: 100%;
   grid-column: 10 / 13;
   grid-row: 2 / 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6%;
   background-color: #4f555c;
   border-radius: 25px;
   border: solid 2px white;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &-recipe {
+    width: 95%;
+    height: 12.5%;
+    background-color: #2b3138;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 6px -7px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      box-shadow: rgba(32, 32, 32, 0.4) 0px 10px 6px -7px;
+    }
+  }
 }
