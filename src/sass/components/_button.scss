@@ -1,0 +1,17 @@
+.btn {
+  &__app-mode {
+    position: absolute;
+    width: 10rem;
+    height: 4rem;
+    top: 5%;
+    left: 15%;
+  }
+
+  &__form-submit {
+    position: absolute;
+    width: 10rem;
+    height: 4rem;
+    top: 5%;
+    left: 25%;
+  }
+}

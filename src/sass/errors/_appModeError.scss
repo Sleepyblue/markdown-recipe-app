@@ -1,0 +1,30 @@
+.app__mode-error {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 10%;
+  border-radius: 22px;
+  color: white;
+  border: solid 2px white;
+  background-color: #4f555c;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  font-family: 'Nunito';
+  font-size: 2rem;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.error__icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.error__icon-container--close > .error__icon {
+  pointer-events: none;
+}

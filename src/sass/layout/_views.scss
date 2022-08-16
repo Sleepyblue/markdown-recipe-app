@@ -1,0 +1,73 @@
+// rgba(79, 85, 92, 0.7)
+// rgba(59, 67, 77, 0.7);
+// rgba(43, 49, 56, 0.7)
+
+.views {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+
+  &__button {
+    width: 50%;
+    aspect-ratio: 1 /1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: #292d32;
+    border: none;
+    outline: none;
+    box-shadow: 3px 3px 7px rgba(32, 35, 41, 0.7),
+      -2px -2px 5px rgba(79, 85, 92, 0.7);
+    transition: all 0.5s cubic-bezier(0.1, 0.7, 0.6, 0.9);
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 3px 3px 7px rgba(32, 35, 41, 1),
+        -2px -2px 5px rgba(79, 85, 92, 1);
+    }
+
+    &:active {
+      box-shadow: inset 3px 3px 7px rgba(32, 35, 41, 1),
+        inset -2px -2px 5px rgba(79, 85, 92, 1);
+    }
+  }
+
+  &__icon {
+    width: 50%;
+    height: 50%;
+    color: #fe662a;
+  }
+}
+
+.desktop {
+  max-width: 192rem;
+  max-height: 108rem;
+}
+
+.laptop {
+  max-width: 133.6rem;
+  max-height: 76.6rem;
+}
+
+.tablet-portrait {
+  max-width: 76.8rem;
+  max-height: 102.4rem;
+}
+
+.tablet-landscape {
+  max-width: 102.4rem;
+  max-height: 76.8rem;
+}
+
+.phone-portrait {
+  max-width: 37.5rem;
+  max-height: 81.2rem;
+}
