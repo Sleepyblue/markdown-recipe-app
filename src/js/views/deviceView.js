@@ -1,4 +1,4 @@
-class deviceView {
+class DeviceView {
   _button = document.querySelectorAll('.views__button');
   _app = document.querySelector('.app');
 
@@ -18,4 +18,4 @@ class deviceView {
   }
 }
 
-export default new deviceView();
+export default new DeviceView();

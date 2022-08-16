@@ -1,5 +1,4 @@
-// Ingredient Class
-class appView {
+class AppView {
   _form = document.querySelector('.markdown__form');
   _app = document.querySelector('.app');
   _preview = document.querySelector('.app__mode-preview');
@@ -156,4 +155,4 @@ class appView {
   // }
 }
 
-export default new appView();
+export default new AppView();
