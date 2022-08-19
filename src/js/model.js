@@ -147,8 +147,8 @@ export const convertSteps = function (string, state) {
   );
 };
 
-export const pushToRecipeHolder = function (recipeState) {
-  recipeHolder.push(recipeState);
+export const pushToRecipeHolder = function (state) {
+  recipeHolder.push({ ...state });
 };
 
 export const sliceIconName = function (string) {

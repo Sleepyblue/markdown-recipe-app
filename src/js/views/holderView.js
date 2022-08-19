@@ -1,5 +1,6 @@
 class HolderView {
   _holder = document.querySelector('.recipes__holder');
+  _form = document.querySelector('.markdown__form');
 
   renderHolder(recipeTitle) {
     const markup = `
@@ -9,6 +10,10 @@ class HolderView {
        `;
 
     this._holder.insertAdjacentHTML('beforeend', markup);
+  }
+
+  addHandlerRenderHolder(handler) {
+    this._form.addEventListener('submit', handler);
   }
 }
 

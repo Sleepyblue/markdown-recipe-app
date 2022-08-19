@@ -3,6 +3,7 @@
 import * as model from './model.js';
 import AppView from './views/AppView.js';
 import DeviceView from './views/DeviceView';
+import HolderView from './views/holderView.js';
 
 const controlExtractRecipe = async function (string) {
   try {
@@ -23,8 +24,14 @@ const controlExtractRecipe = async function (string) {
     // Slice recipe name for error catching
     // ERROR CATCHING - Recipe name already exists
     const slicedRecipeName = model.sliceRecipeName(recipeName);
-    if (slicedRecipeName === model.recipeState.recipeName)
-      throw new Error(`Recipe name already used. Please choose another one!`);
+
+    model.recipeHolder.forEach((holder) => {
+      if (!holder) {
+        console.log('There are no recipes saved!');
+        return;
+      } else if (holder.recipeName === slicedRecipeName)
+        throw new Error(`Recipe name already used. Please choose another one!`);
+    });
 
     // ERROR CLEANING
     AppView.cleanError();
@@ -38,8 +45,6 @@ const controlExtractRecipe = async function (string) {
     if (cookwareData !== null) model.sliceCookware(cookwareData);
     model.convertSteps(string, model.recipeState);
 
-    model.pushToRecipeHolder(model.recipeState);
-
     // Create and render elements on preview based on markdown input
     AppView.renderBaseMarkup();
     AppView.renderStepsList(model.recipeState.steps);
@@ -47,13 +52,24 @@ const controlExtractRecipe = async function (string) {
     if (cookwareData !== null)
       AppView.renderCookwareList(model.recipeState.cookware);
 
-    // console.log(model.appState);
     console.log(model.recipeState);
-    console.log(model.recipeHolder);
   } catch (err) {
     AppView.renderError(err.message);
-    // console.error(err);
   }
+};
+
+const controlHolderView = function () {
+  model.recipeHolder.forEach((holder) => {
+    if (holder.recipeName === model.recipeState.recipeName) {
+      console.log('Its the same');
+      return;
+    }
+  });
+
+  model.pushToRecipeHolder(model.recipeState);
+  console.log(model.recipeHolder);
+
+  HolderView.renderHolder(model.recipeState.recipeName);
 };
 
 const controlDeviceView = function (string) {
@@ -76,6 +92,7 @@ const init = function () {
   AppView.addHandlerRender(controlExtractRecipe);
   AppView.addHandlerAppView(controlAppView);
   // AppView.addHandlerError(controlErrorView);
+  HolderView.addHandlerRenderHolder(controlHolderView);
   DeviceView.addHandlerChangeView(controlDeviceView);
 };
 
