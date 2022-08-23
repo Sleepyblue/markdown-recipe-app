@@ -7,6 +7,8 @@ import HolderView from './views/holderView.js';
 
 const controlExtractRecipe = async function (string) {
   try {
+    console.log(model.recipeState);
+
     // Extract recipe NAME, INGREDIENTS AND COOKWARE
     // Store each value into variables
     const recipeName = AppView.extractRecipeName(string);
@@ -59,17 +61,26 @@ const controlExtractRecipe = async function (string) {
 };
 
 const controlHolderView = function () {
+  let checker;
+  if (model.recipeHolder.length === 0) checker = true;
+
   model.recipeHolder.forEach((holder) => {
-    if (holder.recipeName === model.recipeState.recipeName) {
-      console.log('Its the same');
-      return;
+    if (
+      holder.recipeName === model.recipeState.recipeName ||
+      !model.recipeState.recipeName
+    ) {
+      checker = false;
+    } else {
+      checker = true;
     }
   });
 
-  model.pushToRecipeHolder(model.recipeState);
-  console.log(model.recipeHolder);
-
-  HolderView.renderHolder(model.recipeState.recipeName);
+  if (checker) {
+    model.pushToRecipeHolder(model.recipeState);
+    console.log(model.recipeHolder);
+    HolderView.renderHolder(model.recipeState.recipeName);
+    model.cleanState();
+  }
 };
 
 const controlDeviceView = function (string) {

@@ -148,7 +148,24 @@ export const convertSteps = function (string, state) {
 };
 
 export const pushToRecipeHolder = function (state) {
-  recipeHolder.push({ ...state });
+  // recipeHolder.push({ ...state });
+  recipeHolder.push({
+    originalString: state.originalString,
+    recipeName: state.recipeName,
+    ingredients: [...state.ingredients],
+    cookware: [...state.cookware],
+    steps: [...state.steps],
+  });
+};
+
+export const cleanState = function () {
+  recipeState = {
+    originalString: '',
+    recipeName: '',
+    ingredients: [],
+    cookware: [],
+    steps: [],
+  };
 };
 
 export const sliceIconName = function (string) {
