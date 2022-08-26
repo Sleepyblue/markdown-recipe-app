@@ -3,8 +3,9 @@ class AppView {
   _app = document.querySelector('.app');
   _preview = document.querySelector('.app__mode-preview');
   _editBtn = document.querySelector('.btn__app-mode');
-  _stepsList;
+  _recipeTitle;
   _ingList;
+  _stepsList;
   _ckwList;
 
   extractRecipeName(string) {
@@ -43,19 +44,14 @@ class AppView {
     this._preview.innerHTML = '';
     this._preview.insertAdjacentHTML('beforeend', markup);
 
-    this._stepsList = document.querySelector('.preview__list-steps');
+    this._recipeTitle = document.querySelector('.preview__recipe-name');
     this._ingList = document.querySelector('.preview__list-ingredients');
+    this._stepsList = document.querySelector('.preview__list-steps');
     this._ckwList = document.querySelector('.preview__list-cookware');
   }
 
-  renderStepsList(stepsArr) {
-    stepsArr.forEach((data) => {
-      const markupItem = `
-      <li>${data}</li>
-      `;
-
-      this._stepsList.insertAdjacentHTML('beforeend', markupItem);
-    });
+  renderRecipeTitle(recipeTitle) {
+    this._recipeTitle.textContent = recipeTitle;
   }
 
   renderIngredientsList(ingredientsArr) {
@@ -67,6 +63,16 @@ class AppView {
       `;
 
       this._ingList.insertAdjacentHTML('beforeend', markupItem);
+    });
+  }
+
+  renderStepsList(stepsArr) {
+    stepsArr.forEach((data) => {
+      const markupItem = `
+      <li>${data}</li>
+      `;
+
+      this._stepsList.insertAdjacentHTML('beforeend', markupItem);
     });
   }
 
@@ -90,19 +96,6 @@ class AppView {
   }
 
   renderError(message) {
-    // const markupError = `
-    //   <div class="app__mode-error">
-    //     <div class="error__icon-container">
-    //        <ion-icon class="error__icon" name="bug-outline"></ion-icon>
-    //     </div>
-    //     <div class="error__message-container"/>
-    //     <p class="error__message">${message}</p>
-    //     </div>
-    //     <div class="error__icon-container error__icon-container--close">
-    //        <ion-icon class="error__icon" name="close-circle-outline"></ion-icon>
-    //     </div>
-    //   </div>`;
-
     const markupError = `
       <div class="app__mode-error">
         <div class="error__icon-container">
@@ -115,10 +108,6 @@ class AppView {
 
     this.cleanError();
     this._app.insertAdjacentHTML('afterbegin', markupError);
-
-    // setTimeout(() => {
-    //   this._app.querySelector('.app__mode-error').remove();
-    // }, 10000);
   }
 
   cleanError() {
@@ -141,18 +130,6 @@ class AppView {
       handler(appMode);
     });
   }
-
-  // addHandlerError() {
-  //   await this.renderError
-  //   if (this._app.querySelector('.app__mode-error')) {
-  //     const errorBox = this._app.querySelector('.app__mode-error');
-  //     const errorBtn = this._app.querySelector('.error__icon-container--close');
-  //     errorBtn.addEventListener('click', function (e) {
-  //       e.preventDefault();
-  //       handler(errorBox);
-  //     });
-  //   } else return;
-  // }
 }
 
 export default new AppView();

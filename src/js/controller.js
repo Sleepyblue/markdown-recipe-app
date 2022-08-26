@@ -7,8 +7,6 @@ import HolderView from './views/holderView.js';
 
 const controlExtractRecipe = async function (string) {
   try {
-    console.log(model.recipeState);
-
     // Extract recipe NAME, INGREDIENTS AND COOKWARE
     // Store each value into variables
     const recipeName = AppView.extractRecipeName(string);
@@ -49,6 +47,7 @@ const controlExtractRecipe = async function (string) {
 
     // Create and render elements on preview based on markdown input
     AppView.renderBaseMarkup();
+    AppView.renderRecipeTitle(model.recipeState.recipeName);
     AppView.renderStepsList(model.recipeState.steps);
     AppView.renderIngredientsList(model.recipeState.ingredients);
     if (cookwareData !== null)
@@ -62,7 +61,7 @@ const controlExtractRecipe = async function (string) {
 
 const controlHolderView = function () {
   let checker;
-  if (model.recipeHolder.length === 0) checker = true;
+  if (model.recipeState.recipeName) checker = true;
 
   model.recipeHolder.forEach((holder) => {
     if (
@@ -95,14 +94,9 @@ const controlAppView = function (string) {
   AppView.renderAppMode(currentAppMode, changeAppMode, btnText);
 };
 
-// const controlErrorView = function (element) {
-//   console.log(element);
-// };
-
 const init = function () {
   AppView.addHandlerRender(controlExtractRecipe);
   AppView.addHandlerAppView(controlAppView);
-  // AppView.addHandlerError(controlErrorView);
   HolderView.addHandlerRenderHolder(controlHolderView);
   DeviceView.addHandlerChangeView(controlDeviceView);
 };
