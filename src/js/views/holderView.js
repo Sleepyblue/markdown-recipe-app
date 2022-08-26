@@ -5,7 +5,7 @@ class HolderView {
   renderHolder(recipeTitle) {
     const markup = `
         <div class="recipes__holder-recipe">
-            <div>${recipeTitle}</div> 
+            <div class="recipes__holder-recipe--title">${recipeTitle}</div> 
         </div>
        `;
 
@@ -14,6 +14,10 @@ class HolderView {
 
   addHandlerRenderHolder(handler) {
     this._form.addEventListener('submit', handler);
+  }
+
+  addHandlerLoadHolder(handler) {
+    window.addEventListener('load', handler);
   }
 }
 

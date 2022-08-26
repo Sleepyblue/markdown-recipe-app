@@ -158,6 +158,20 @@ export const pushToRecipeHolder = function (state) {
   });
 };
 
+export const saveLocalStorage = function (recipeHolder) {
+  localStorage.setItem('recipeHolder', JSON.stringify(recipeHolder));
+};
+
+export const getLocalStorage = function () {
+  const localStorageString = localStorage.getItem('recipeHolder');
+  let holders;
+
+  if (localStorageString) {
+    holders = JSON.parse(localStorageString);
+  }
+  return holders;
+};
+
 export const cleanState = function () {
   recipeState = {
     originalString: '',

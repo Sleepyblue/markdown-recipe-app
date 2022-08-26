@@ -76,10 +76,23 @@ const controlHolderView = function () {
 
   if (checker) {
     model.pushToRecipeHolder(model.recipeState);
+    model.saveLocalStorage(model.recipeHolder);
     console.log(model.recipeHolder);
+    console.log(localStorage);
     HolderView.renderHolder(model.recipeState.recipeName);
     model.cleanState();
   }
+};
+
+const controlLoadHolder = function () {
+  model.getLocalStorage();
+  const holders = model.getLocalStorage();
+
+  if (!holders) return;
+
+  holders.forEach((holder) => {
+    HolderView.renderHolder(holder.recipeName);
+  });
 };
 
 const controlDeviceView = function (string) {
@@ -97,6 +110,7 @@ const controlAppView = function (string) {
 const init = function () {
   AppView.addHandlerRender(controlExtractRecipe);
   AppView.addHandlerAppView(controlAppView);
+  HolderView.addHandlerLoadHolder(controlLoadHolder);
   HolderView.addHandlerRenderHolder(controlHolderView);
   DeviceView.addHandlerChangeView(controlDeviceView);
 };
