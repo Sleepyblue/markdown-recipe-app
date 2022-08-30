@@ -19,6 +19,14 @@ class HolderView {
   addHandlerLoadHolder(handler) {
     window.addEventListener('load', handler);
   }
+
+  addHandlerHolderClick(handler) {
+    this._holder.addEventListener('click', function (e) {
+      const holder = e.target.closest('.recipes__holder-recipe');
+
+      handler(holder);
+    });
+  }
 }
 
 export default new HolderView();

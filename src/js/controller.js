@@ -87,11 +87,28 @@ const controlHolderView = function () {
 const controlLoadHolder = function () {
   model.getLocalStorage();
   const holders = model.getLocalStorage();
-
   if (!holders) return;
+
+  model.recipeHolder.push(...holders);
+  console.log(model.recipeHolder);
 
   holders.forEach((holder) => {
     HolderView.renderHolder(holder.recipeName);
+  });
+};
+
+const controlHolderClick = function (element) {
+  const elementTitle = element.textContent.trim();
+  const test = model.getHolderClickingData(elementTitle);
+
+  test.forEach((holder) => {
+    if (holder.recipeName === elementTitle) {
+      AppView.renderBaseMarkup();
+      AppView.renderRecipeTitle(holder.recipeName);
+      AppView.renderStepsList(holder.steps);
+      AppView.renderIngredientsList(holder.ingredients);
+      AppView.renderCookwareList(holder.cookware);
+    }
   });
 };
 
@@ -112,6 +129,7 @@ const init = function () {
   AppView.addHandlerAppView(controlAppView);
   HolderView.addHandlerLoadHolder(controlLoadHolder);
   HolderView.addHandlerRenderHolder(controlHolderView);
+  HolderView.addHandlerHolderClick(controlHolderClick);
   DeviceView.addHandlerChangeView(controlDeviceView);
 };
 

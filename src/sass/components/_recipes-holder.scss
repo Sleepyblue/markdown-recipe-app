@@ -13,6 +13,7 @@
   border-radius: 25px;
   border: solid 2px white;
   overflow-y: scroll;
+  pointer-events: none;
 
   &::-webkit-scrollbar {
     display: none;
@@ -28,6 +29,7 @@
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 6px -7px;
     cursor: pointer;
+    pointer-events: all;
 
     &:hover {
       background-color: white;

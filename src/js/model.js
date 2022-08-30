@@ -29,7 +29,6 @@ export const saveOriginalInput = function (string) {
 
 export const sliceRecipeName = function (dataArr) {
   const slicedName = dataArr[0].slice(2, dataArr[0].length).trim();
-  // recipeState.recipeName = slicedName;
   return slicedName;
 };
 
@@ -148,7 +147,6 @@ export const convertSteps = function (string, state) {
 };
 
 export const pushToRecipeHolder = function (state) {
-  // recipeHolder.push({ ...state });
   recipeHolder.push({
     originalString: state.originalString,
     recipeName: state.recipeName,
@@ -169,6 +167,13 @@ export const getLocalStorage = function () {
   if (localStorageString) {
     holders = JSON.parse(localStorageString);
   }
+  return holders;
+};
+
+export const getHolderClickingData = function (elementTitle) {
+  const holders = getLocalStorage();
+  console.log(holders);
+
   return holders;
 };
 
