@@ -53,6 +53,7 @@ const controlExtractRecipe = async function (string) {
     if (cookwareData !== null)
       AppView.renderCookwareList(model.recipeState.cookware);
 
+    AppView.cleanMarkdown();
     console.log(model.recipeState);
   } catch (err) {
     AppView.renderError(err.message);

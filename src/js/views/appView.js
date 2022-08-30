@@ -1,6 +1,7 @@
 class AppView {
   _form = document.querySelector('.markdown__form');
   _app = document.querySelector('.app');
+  _markdown = document.querySelector('.app__mode-markdown');
   _preview = document.querySelector('.app__mode-preview');
   _editBtn = document.querySelector('.btn__app-mode');
   _recipeTitle;
@@ -97,10 +98,10 @@ class AppView {
 
   renderError(message) {
     const markupError = `
-      <div class="app__mode-error">
-        <div class="error__icon-container">
-           <ion-icon class="error__icon" name="bug-outline"></ion-icon>
-        </div> 
+    <div class="app__mode-error">
+    <div class="error__icon-container">
+    <ion-icon class="error__icon" name="bug-outline"></ion-icon>
+    </div> 
         <div class="error__message-container"/>
         <p class="error__message">${message}</p> 
         </div> 
@@ -108,6 +109,10 @@ class AppView {
 
     this.cleanError();
     this._app.insertAdjacentHTML('afterbegin', markupError);
+  }
+
+  cleanMarkdown() {
+    this._markdown.querySelector('.form-text').value = '';
   }
 
   cleanError() {
