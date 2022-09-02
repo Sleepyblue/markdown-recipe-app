@@ -105,6 +105,7 @@ const controlHolderClick = function (element) {
 
   test.forEach((holder) => {
     if (holder.recipeName === elementTitle) {
+      AppView.renderMarkdownOriginalString(holder.originalString);
       AppView.renderBaseMarkup();
       AppView.renderRecipeTitle(holder.recipeName);
       AppView.renderStepsList(holder.steps);

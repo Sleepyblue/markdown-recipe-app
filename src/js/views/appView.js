@@ -27,6 +27,10 @@ class AppView {
     return string.match(cookwareRegex);
   }
 
+  renderMarkdownOriginalString(originalMarkdownString) {
+    this._form.querySelector('.form-text').value = originalMarkdownString;
+  }
+
   renderBaseMarkup() {
     const markup = `
     <div class="preview__container-title">  
