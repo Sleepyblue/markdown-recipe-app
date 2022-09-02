@@ -112,7 +112,7 @@ class AppView {
   }
 
   cleanMarkdown() {
-    this._markdown.querySelector('.form-text').value = '';
+    this._markdown.querySelector('.form-text').reset();
   }
 
   cleanError() {
