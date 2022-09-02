@@ -96,6 +96,15 @@ class AppView {
     this._editBtn.textContent = updateBtnText;
   }
 
+  renderToPreview() {
+    document.querySelector(`.app__mode-markdown`).style.display = 'none';
+    document
+      .querySelector(`.app__mode-preview`)
+      .style.removeProperty('display');
+    document.querySelector('.app__mode').dataset.mode = 'preview';
+    this._editBtn.textContent = 'Edit';
+  }
+
   renderError(message) {
     const markupError = `
     <div class="app__mode-error">
@@ -112,7 +121,7 @@ class AppView {
   }
 
   cleanMarkdown() {
-    this._markdown.querySelector('.form-text').reset();
+    this._form.reset();
   }
 
   cleanError() {
@@ -131,6 +140,7 @@ class AppView {
   addHandlerAppView(handler) {
     this._editBtn.addEventListener('click', function (e) {
       e.preventDefault();
+
       const appMode = document.querySelector('.app__mode').dataset.mode;
       handler(appMode);
     });
