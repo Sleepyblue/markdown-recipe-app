@@ -5,7 +5,38 @@ import AppView from './views/AppView.js';
 import DeviceView from './views/DeviceView';
 import HolderView from './views/holderView.js';
 
-const controlExtractRecipe = async function (string) {
+function updateRecipeState(recipeString, name, ingredients, cookware) {
+  model.saveOriginalInput(recipeString);
+  model.saveRecipeName(name);
+  model.sliceIngredients(ingredients);
+  model.sliceQuantity(ingredients);
+  model.sliceUnit(ingredients);
+  if (cookware !== null) model.sliceCookware(cookware);
+  model.convertSteps(recipeString, model.recipeState);
+}
+
+function renderRecipeState(dataSource, cookware) {
+  AppView.renderBaseMarkup();
+  AppView.renderRecipeTitle(dataSource.recipeName);
+  AppView.renderStepsList(dataSource.steps);
+  AppView.renderIngredientsList(dataSource.ingredients);
+  if (cookware !== null) AppView.renderCookwareList(dataSource.cookware);
+}
+
+function saveChangedRecipeDetails(holderData, recipeString, recipeName) {
+  holderData.forEach((holder) => {
+    if (
+      holder.recipeName.toLowerCase().replace(/\s/g, '') ===
+      recipeName.toLowerCase().replace(/\s/g, '')
+    ) {
+      console.log(holder);
+
+      holder.originalString = recipeString;
+    }
+  });
+}
+
+const controlRecipeInput = async function (string) {
   try {
     // Extract recipe NAME, INGREDIENTS AND COOKWARE
     // Store each value into variables
@@ -24,35 +55,61 @@ const controlExtractRecipe = async function (string) {
     // Slice recipe name for error catching
     // ERROR CATCHING - Recipe name already exists
     const slicedRecipeName = model.sliceRecipeName(recipeName);
+    let usedRecipeName = false;
+    let recipeDetailsChanged = false;
 
     model.recipeHolder.forEach((holder) => {
       if (!holder) {
         console.log('There are no recipes saved!');
         return;
-      } else if (holder.recipeName === slicedRecipeName)
-        throw new Error(`Recipe name already used. Please choose another one!`);
+      } else if (
+        holder.recipeName.toLowerCase().replace(/\s/g, '') ===
+          slicedRecipeName.toLowerCase().replace(/\s/g, '') &&
+        holder.originalString.toLowerCase().replace(/\s/g, '') ===
+          string.toLowerCase().replace(/\s/g, '')
+      )
+        usedRecipeName = true;
+      else if (
+        holder.recipeName.toLowerCase().replace(/\s/g, '') ===
+          slicedRecipeName.toLowerCase().replace(/\s/g, '') &&
+        holder.originalString.toLowerCase().replace(/\s/g, '') !==
+          string.toLowerCase().replace(/\s/g, '')
+      ) {
+        recipeDetailsChanged = true;
+      }
     });
+
+    if (usedRecipeName && !recipeDetailsChanged) {
+      console.log(usedRecipeName);
+      console.log(recipeDetailsChanged);
+      throw new Error(`Recipe name already used. Please choose another one!`);
+    }
+
+    if (!usedRecipeName && recipeDetailsChanged) {
+      console.log(usedRecipeName);
+      console.log(recipeDetailsChanged);
+
+      const modifyConfirmation = window.confirm(
+        'Same Title but string has been modified, do you still want to save?'
+      );
+
+      if (!modifyConfirmation) {
+        console.log('Cancelled. Returning...');
+        return;
+      } else
+        saveChangedRecipeDetails(model.recipeHolder, string, slicedRecipeName);
+    }
 
     // ERROR CLEANING
     AppView.cleanError();
 
     // Save recipe input into 'recipeState'
-    model.saveOriginalInput(string);
-    model.saveRecipeName(recipeName);
-    model.sliceIngredients(ingredientsData);
-    model.sliceQuantity(ingredientsData);
-    model.sliceUnit(ingredientsData);
-    if (cookwareData !== null) model.sliceCookware(cookwareData);
-    model.convertSteps(string, model.recipeState);
+    updateRecipeState(string, recipeName, ingredientsData, cookwareData);
 
     // Create and render elements on preview based on markdown input
-    AppView.renderBaseMarkup();
-    AppView.renderRecipeTitle(model.recipeState.recipeName);
-    AppView.renderStepsList(model.recipeState.steps);
-    AppView.renderIngredientsList(model.recipeState.ingredients);
-    if (cookwareData !== null)
-      AppView.renderCookwareList(model.recipeState.cookware);
+    renderRecipeState(model.recipeState, cookwareData);
 
+    // Clear Markdown Container and change view to Preview
     AppView.cleanMarkdown();
     AppView.renderToPreview();
     console.log(model.recipeState);
@@ -128,7 +185,7 @@ const controlAppView = function (string) {
 };
 
 const init = function () {
-  AppView.addHandlerRender(controlExtractRecipe);
+  AppView.addHandlerRender(controlRecipeInput);
   AppView.addHandlerAppView(controlAppView);
   HolderView.addHandlerLoadHolder(controlLoadHolder);
   HolderView.addHandlerRenderHolder(controlHolderView);
