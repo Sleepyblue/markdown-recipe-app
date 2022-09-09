@@ -23,17 +23,24 @@ function renderRecipeState(dataSource, cookware) {
   if (cookware !== null) AppView.renderCookwareList(dataSource.cookware);
 }
 
-function saveChangedRecipeDetails(holderData, recipeString, recipeName) {
-  holderData.forEach((holder) => {
+function saveChangedRecipeDetails(recipeString, recipeName) {
+  const storage = model.getLocalStorage();
+  console.log(storage);
+
+  storage.forEach((holder) => {
     if (
       holder.recipeName.toLowerCase().replace(/\s/g, '') ===
       recipeName.toLowerCase().replace(/\s/g, '')
     ) {
-      console.log(holder);
-
       holder.originalString = recipeString;
+      holder.recipeName = recipeName;
+      holder.ingredients = [...model.recipeState.ingredients];
+      holder.cookware = [...model.recipeState.cookware];
+      holder.steps = [...model.recipeState.steps];
     }
   });
+  model.saveLocalStorage(storage);
+  model.cleanState();
 }
 
 const controlRecipeInput = async function (string) {
@@ -57,6 +64,7 @@ const controlRecipeInput = async function (string) {
     const slicedRecipeName = model.sliceRecipeName(recipeName);
     let usedRecipeName = false;
     let recipeDetailsChanged = false;
+    let breaking = false;
 
     model.recipeHolder.forEach((holder) => {
       if (!holder) {
@@ -80,15 +88,11 @@ const controlRecipeInput = async function (string) {
     });
 
     if (usedRecipeName && !recipeDetailsChanged) {
-      console.log(usedRecipeName);
-      console.log(recipeDetailsChanged);
       throw new Error(`Recipe name already used. Please choose another one!`);
     }
 
     if (!usedRecipeName && recipeDetailsChanged) {
-      console.log(usedRecipeName);
-      console.log(recipeDetailsChanged);
-
+      breaking = true;
       const modifyConfirmation = window.confirm(
         'Same Title but string has been modified, do you still want to save?'
       );
@@ -96,13 +100,21 @@ const controlRecipeInput = async function (string) {
       if (!modifyConfirmation) {
         console.log('Cancelled. Returning...');
         return;
-      } else
-        saveChangedRecipeDetails(model.recipeHolder, string, slicedRecipeName);
+      } else {
+        updateRecipeState(string, recipeName, ingredientsData, cookwareData);
+        saveChangedRecipeDetails(string, slicedRecipeName);
+        console.log('Read until modified stuff');
+
+        return;
+      }
     }
 
     // ERROR CLEANING
     AppView.cleanError();
 
+    if (breaking) return;
+
+    console.log('Running past the breaking point');
     // Save recipe input into 'recipeState'
     updateRecipeState(string, recipeName, ingredientsData, cookwareData);
 
@@ -137,7 +149,6 @@ const controlHolderView = function () {
     model.pushToRecipeHolder(model.recipeState);
     model.saveLocalStorage(model.recipeHolder);
     console.log(model.recipeHolder);
-    console.log(localStorage);
     HolderView.renderHolder(model.recipeState.recipeName);
     model.cleanState();
   }
@@ -149,7 +160,7 @@ const controlLoadHolder = function () {
   if (!holders) return;
 
   model.recipeHolder.push(...holders);
-  console.log(model.recipeHolder);
+  console.log(model.recipeState);
 
   holders.forEach((holder) => {
     HolderView.renderHolder(holder.recipeName);
