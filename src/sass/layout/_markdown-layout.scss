@@ -27,7 +27,11 @@
   padding: 2rem;
   color: white;
   font-family: 'Nunito';
-  font-size: 3rem;
+  resize: none;
+
+  // Testing
+  line-height: 1.6;
+  font-size: 1.6rem;
 
   &::-webkit-scrollbar {
     display: none;
