@@ -7,8 +7,6 @@
   border-radius: 22px;
   overflow: hidden;
   color: white;
-  border: solid 2px white;
-  background-color: #4f555c;
 }
 
 .markdown__form {
@@ -17,15 +15,19 @@
 }
 
 .form-text {
-  background-color: transparent;
   border: none;
   outline: none;
-  width: 99%;
-  height: 99%;
+  width: 100%;
+  height: 100%;
   word-wrap: break-word;
   word-break: break-all;
   padding: 2rem;
-  color: white;
+  color: #6e7f8d;
+  border-radius: 22px;
+  background-color: #eff2f9;
+  // background-color: #e4ebf1;
+  box-shadow: inset rgba(22, 27, 29, 0.25) 4px 4px 4px,
+    inset rgba(250, 251, 255, 0.3) -4px -4px 4px;
   font-family: 'Nunito';
   resize: none;
 

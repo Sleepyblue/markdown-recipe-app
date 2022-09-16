@@ -1,9 +1,8 @@
 .recipes__holder {
   grid-column: 10 / 13;
-  grid-row: 2 / 12;
-  background-color: #4f555c;
-  border-radius: 25px;
-  border: solid 2px white;
+  grid-row: 1 / -1;
+  background-color: #eff2f9;
+  border-radius: 25px 0 0 25px;
 
   &-flex {
     width: 100%;
@@ -12,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0.5rem 0.5rem;
-    gap: 1rem;
+    gap: 1.5rem;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
@@ -27,38 +26,49 @@
     flex-shrink: 0;
     align-items: flex-end;
     justify-content: center;
-    background-color: rgba(43, 49, 56, 0.2);
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 6px -7px;
+    box-shadow: rgba(22, 27, 29, 0.25) 8px 8px 12px,
+      rgba(250, 251, 255, 0.3) -10px -10px 14px;
     pointer-events: all;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
     cursor: pointer;
 
     &:hover {
-      background-color: rgba(193, 194, 196, 0.2);
-      box-shadow: rgba(32, 32, 32, 0.4) 0px 10px 6px -7px;
+      box-shadow: rgba(22, 27, 29, 0.25) 6px 6px 8px,
+        rgba(250, 251, 255, 0.3) -6px -6px 8px;
+      transform: translateY(2px);
+
+      & .recipes__holder-recipe--image {
+        box-shadow: rgba(22, 27, 29, 0.25) 3px 3px 8px,
+          rgba(250, 251, 255, 0.3) -3px -3px 8px;
+      }
     }
 
     &--container {
       width: 100%;
       height: 100%;
-      background-color: rgba(43, 49, 56, 1);
+      background-color: linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.22),
+        rgba(239, 242, 249, 0.25)
+      );
       border-radius: 20px;
       display: flex;
       align-items: center;
-      padding: 0.5rem 0.5rem;
+      padding: 0.5rem 1rem;
       font-family: 'Nunito';
-      color: white;
+      color: #6e7f8d;
       pointer-events: none;
     }
 
     &--image {
-      max-width: 10rem;
-      width: 100%;
-      max-height: 8rem;
-      height: 100%;
-      justify-self: flex-start;
+      width: 50%;
+      height: 80%;
       border-radius: 15px;
-      background-color: dodgerblue;
+      background-color: #eff2f9;
+      box-shadow: rgba(22, 27, 29, 0.25) 5px 5px 15px,
+        rgba(250, 251, 255, 0.3) -5px -5px 15px;
+      transition: box-shadow 0.1s ease-in-out;
     }
 
     &--info {
@@ -67,20 +77,26 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
       padding: 0.5rem 0.5rem 0.5rem 1rem;
-      gap: 1.5%;
+      gap: 1%;
     }
 
     &--title {
-      font-size: 1.2rem;
+      height: max-content;
+      margin-top: 15%;
+      font-size: 1.4rem;
       font-weight: 700;
     }
 
     &--type,
     &--details {
-      font-size: 0.7rem;
+      font-size: 1rem;
       font-weight: 300;
+    }
+
+    &--details {
+      height: 20%;
     }
 
     &--type {

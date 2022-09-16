@@ -35,6 +35,7 @@ class AppView {
     const markup = `
     <div class="preview__container-title">  
       <h2 class="preview__recipe-name"></h2>
+      <div class="preview__recipe-image"></div>
     </div>
     <div class="preview__container-steps">  
       <ul class="preview__list-steps"></ul>
