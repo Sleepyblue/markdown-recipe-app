@@ -74,7 +74,8 @@ ___
 >**EXAMPLE:** Slice @apple_(500&grams) and use @soft butter_(150&grams). Cook it on and #oven using an #iron skillet_ 
 
 - Each `\n` (line break) is considered a step.
->**EXAMPLE:** Slice @apple_(500&grams) and use @soft butter_(150&grams). *(STEP 1)* <br>
+>**EXAMPLE:**<br>
+>Slice @apple_(500&grams) and use @soft butter_(150&grams). *(STEP 1)* <br>
 >Cook it on and #oven using an #iron skillet_ *STEP 2)*
 
 ___
