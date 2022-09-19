@@ -46,7 +46,7 @@ ___
 - [x] Save recipe to `localStorage` and render the bookmark
 - [x] Render bookmark
 - [x] Restrict similar recipe titles and recognise changes made to an already existing recipe
-- [ ] Implement a 'Neuromorphic' application design (Ongoing... )
+- [ ] Implement a 'Neuromorphic' application design **[ONGOING]**
 - [ ] Implement a Metadata block recognition (servings, recipe type, preparation time, cooking time, nutritional information, image links, more?)
 - [ ] If metadata block has multiple images associate a gallery to the recipe
 - [ ] Time recognition and extraction
