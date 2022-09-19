@@ -101,9 +101,9 @@ ___
 1.  Fork the project
 2.  Clone the project
 3.  Follow the instructions in the console:
-4.  Navigate to the project directory cd sos-animals
+4.  Navigate to the project directory cd markdown-recipe-app
 5.  Install the dependencies npm install
-6.  Run the project npm start
+6.  Run the project npm run dev
 
 ___
 
