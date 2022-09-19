@@ -7,8 +7,6 @@
 - [Installation](#installation)
 - [License](#license)
 
-
-<br>
 <br>
 
 ___
@@ -17,7 +15,6 @@ ___
 
 >*(Ongoing Project)*
 
-<br>
 <br>
 
  A markdown-based recipe application (some syntax inspired by [Cooklang](https://github.com/cooklang/cooklang-ts)) that tries to tone-down recipe management to the absolute essential by being focused on text files, allowing for all the modern interactivity we're used to and other advanced features, while making use of a clean and pleasant user interface (I hope!) to manage your personal recipe database. 
@@ -30,7 +27,6 @@ ___
 The project makes use of HTML, SCSS and JavaScript using the MVC architecture. The used bundler is Vite.
 
 <br>
-<br>
 
 ___
 
@@ -38,7 +34,6 @@ ___
 
 >*Updated as development progresses*
 
-<br>
 <br>
 
 - [x] Ingredients extraction
@@ -69,7 +64,6 @@ ___
 - [ ] Handle database locally instead of using the `localStorage`
 
 <br>
-<br>
 
 ___
 
@@ -77,7 +71,6 @@ ___
 
 >*Updated as development progresses*
 
-<br>
 <br>
 
 - To enter an ingredient use `@ingredient`for a single worded ingredient or `@long ingredient_` for multiple words ingredients. 
@@ -97,33 +90,37 @@ ___
 >Slice @apple_(500&grams) and use @soft butter_(150&grams). *(STEP 1)* <br>
 >Cook it on and #oven using an #iron skillet_ *STEP 2)*
 
+
+<br>
+
 ___
 
-## Demo
+<br>
 
-<br>
-<br>
+## Demo
 
 Live view by clicking the badge: >*To be deployed*
 
 You can also clone the project and open it in localhost 😄
+
+<br>
 
 ___
 
 ## Prerequisits
 
 <br>
-<br>
 
 Before cloning/forking this project, make sure you have the following tools installed:
 - [Git](https://git-scm.com/downloads)
 - [NodeJS](https://nodejs.org/en/download/)
 
+<br>
+
 ___
 
 ## Installation
 
-<br>
 <br>
 
 1.  Fork the project
@@ -133,11 +130,10 @@ ___
 5.  Install the dependencies npm install
 6.  Run the project npm run dev
 
+<br>
+
 ___
 
 ## License
-
-<br>
-<br>
 
 MIT
