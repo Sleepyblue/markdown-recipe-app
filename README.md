@@ -59,6 +59,9 @@ ___
 
 ## How to Use the Project?
 
+<br>
+<br>
+
 >*Updated as development progresses*
 
 - To enter an ingredient use `@ingredient`for a single worded ingredient or `@long ingredient_` for multiple words ingredients. 
@@ -82,7 +85,7 @@ ___
 
 ## Demo
 
-Live view by clicking the badge: [![Netlify Status](https://api.netlify.com/api/v1/badges/f9a7f8d3-58ca-44ed-a038-ae8d2efd31a5/deploy-status)](https://sos-animal.netlify.app/)
+Live view by clicking the badge: >*To be deployed*
 
 You can also clone the project and open it in localhost 😄
 
