@@ -1,15 +1,17 @@
-*TOC*
-- Description
-- Features
-- How to use the Project
-- Demo
-- Prerequisites
-- Installation
-- License
+# Table of Contents
+- [Description](#description)
+- [Features](#features)
+- [How to use the Project](#how-to-use-the-project)
+- [Demo](#demo)
+- [Prerequisits](#prerequisits)
+- [Installation](#installation)
+- [License](#license)
 
-*Description* 
+___
 
-(Ongoing Project)
+## Description 
+
+>*(Ongoing Project)*
 
  A markdown-based recipe application (some syntax inspired by [Cooklang](https://github.com/cooklang/cooklang-ts)) that tries to tone-down recipe management to the absolute essential by being focused on text files, allowing for all the modern interactivity we're used to and other advanced features, while making use of a clean and pleasant user interface (I hope!) to manage your personal recipe database. 
  Some highlights from this management approach are:
@@ -20,9 +22,11 @@
 
 The project makes use of HTML, SCSS and JavaScript using the MVC architecture. The used bundler is Vite.
 
-*Features*
+___
 
-Updated as development progresses
+## Features
+
+>*Updated as development progresses*
 
 - [x] Ingredients extraction
 - [x] Quantities extraction
@@ -51,45 +55,47 @@ Updated as development progresses
 - [ ] 'Search and show recipes by ingredient' when clicking an ingredient
 - [ ] Handle database locally instead of using the `localStorage`
 
-*How to Use the Project?*
+___
 
-Updated as development progresses
+## How to Use the Project?
 
-- To enter an ingredient use `@ingredient`for a single worded ingredient or `@long ingredient_` for multiple words ingredients
+>*Updated as development progresses*
 
-	`Slice an @apple and use @soft butter_ to cook.` 
+- To enter an ingredient use `@ingredient`for a single worded ingredient or `@long ingredient_` for multiple words ingredients. 
+>**EXAMPLE:** Slice an @apple and use @soft butter_ to cook.
 	
 - To enter a unit-less quantity for that ingredient use `@ingredient_(Num)` or `@long ingredient_(Num)`
-
-
-	`Slice @apple_(6) and use @soft butter_(1) to cook.` 
+>**EXAMPLE:** Slice @apple_(6) and use @soft butter_(1) to cook. 
 
 - To enter a quantity with units associated to it use `@ingredient_(Num&Unit)` or `@long ingredient_(Num&Unit)`
-
-	`Slice @apple_(500&grams) and use @soft butter_(150&grams) to cook.` 
+>**EXAMPLE:** Slice @apple_(500&grams) and use @soft butter_(150&grams) to cook. 
 
 - To identify any cookware use `#cookware` or `#long cookware_`
-
-	`Slice @apple_(500&grams) and use @soft butter_(150&grams). Cook it on and #oven using an #iron skillet_` 
+>**EXAMPLE:** Slice @apple_(500&grams) and use @soft butter_(150&grams). Cook it on and #oven using an #iron skillet_ 
 
 - Each `\n` (line break) is considered a step.
+>**EXAMPLE:** Slice @apple_(500&grams) and use @soft butter_(150&grams). *(STEP 1)*
+>Cook it on and #oven using an #iron skillet_ *STEP 2)*
 
-```
-Slice @apple_(500&grams) and use @soft butter_(150&grams). (STEP 1)
-Cook it on and #oven using an #iron skillet_`  (STEP 2)
-```
+___
 
-*Demo?*
+## Demo
+
 Live view by clicking the badge: [![Netlify Status](https://api.netlify.com/api/v1/badges/f9a7f8d3-58ca-44ed-a038-ae8d2efd31a5/deploy-status)](https://sos-animal.netlify.app/)
 
 You can also clone the project and open it in localhost 😄
 
-*Prerequisits*
+___
+
+## Prerequisits
+
 Before cloning/forking this project, make sure you have the following tools installed:
 - [Git](https://git-scm.com/downloads)
 - [NodeJS](https://nodejs.org/en/download/)
 
-*Installation*
+___
+
+## Installation
 
 1.  Fork the project
 2.  Clone the project
@@ -98,5 +104,7 @@ Before cloning/forking this project, make sure you have the following tools inst
 5.  Install the dependencies npm install
 6.  Run the project npm start
 
-*License*
+___
+
+## License
 MIT
