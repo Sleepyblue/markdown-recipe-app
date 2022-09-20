@@ -5,7 +5,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 8rem 8rem;
-  background-image: linear-gradient(to top right, #202329, #4f555c);
+  background-image: url('https://images.unsplash.com/photo-1619252584172-a83a949b6efd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80');
   overflow: hidden;
 }
 
@@ -14,14 +14,19 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  // padding: 0.5rem;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  background-color: #eff2f9;
-  border: 12px solid #b5bfc6;
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 60px 40px -7px;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(228, 235, 241, 0.98),
+    rgba(239, 242, 249, 0.98)
+  );
+  box-shadow: inset rgba(22, 27, 29, 0.25) -4px -4px 3px,
+    inset rgba(250, 251, 255, 0.8) 4px 4px 3px,
+    rgba(22, 27, 29, 0.25) 8px 8px 12px, rgba(250, 251, 255, 0.8) -8px -8px 12px;
   gap: 2rem;
+  padding: 0.5rem 0.5rem;
   transition: all 0.5s cubic-bezier(0.1, 0.7, 0.6, 0.9);
   overflow: hidden;
 
@@ -30,10 +35,15 @@ body {
     grid-row: 3 / 12;
     border-radius: 25px;
     overflow: hidden;
+    box-shadow: inset rgba(22, 27, 29, 0.25) 2px 2px 3px,
+      inset rgba(250, 251, 255, 0.3) -2px -2px 3px,
+      rgba(22, 27, 29, 0.25) -2px -2px 2px, rgba(250, 251, 255, 0.3) 2px 2px 2px;
   }
 
   &__mode[data-mode='preview'] {
-    box-shadow: rgba(22, 27, 29, 0.25) 8px 8px 12px,
-      rgba(250, 251, 255, 0.3) -10px -10px 14px;
+    box-shadow: inset rgba(22, 27, 29, 0.25) -8px -8px 6px,
+      inset rgba(250, 251, 255, 0.8) 8px 8px 6px,
+      rgba(22, 27, 29, 0.25) 8px 8px 12px,
+      rgba(250, 251, 255, 0.8) -8px -8px 12px;
   }
 }

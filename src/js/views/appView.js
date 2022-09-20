@@ -33,18 +33,17 @@ class AppView {
 
   renderBaseMarkup() {
     const markup = `
-    <div class="preview__container-title">  
+    <div class="preview__title-container">  
       <h2 class="preview__recipe-name"></h2>
-      <div class="preview__recipe-image"></div>
     </div>
-    <div class="preview__container-steps">  
+    <div class="preview__steps-container">  
       <ul class="preview__list-steps"></ul>
     </div>
-    <div class="preview__container-ingredients">  
-      <ul class="preview__list-ingredients"></ul>
-    </div>
-    <div class="preview__container-cookware">  
-      <ul class="preview__list-cookware"></ul>
+    <div class="preview__ingredients">  
+      <div class="preview__ingredients-container">
+        <ul class="preview__list-ingredients"></ul>
+        <ul class="preview__list-cookware"></ul>
+      </div>
     </div>
   `;
     this._preview.innerHTML = '';
@@ -113,13 +112,13 @@ class AppView {
   renderError(message) {
     const markupError = `
     <div class="app__mode-error">
-    <div class="error__icon-container">
-    <ion-icon class="error__icon" name="bug-outline"></ion-icon>
-    </div> 
-        <div class="error__message-container"/>
+     <div class="error__icon-container">
+       <ion-icon class="error__icon" name="bug-outline"></ion-icon>
+      </div> 
+      <div class="error__message-container"/>
         <p class="error__message">${message}</p> 
-        </div> 
-      </div>`;
+      </div> 
+    </div>`;
 
     this.cleanError();
     this._app.insertAdjacentHTML('afterbegin', markupError);
@@ -150,6 +149,16 @@ class AppView {
       handler(appMode);
     });
   }
+
+  // addHandlerError(handler) {
+  //   if (this._app.querySelector('.app__mode-error')) {
+  //     const errorWarning = this._app.querySelector('.app__mode-error');
+  //     errorWarning.addEventListener('click', function (e) {
+  //       e.preventDefault();
+  //       handler(e);
+  //     });
+  //   }
+  // }
 }
 
 export default new AppView();
