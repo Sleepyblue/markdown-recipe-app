@@ -1,7 +1,6 @@
 .recipes__holder {
   grid-column: 10 / 13;
   grid-row: 1 / -1;
-  background-color: #eff2f9;
   border-radius: 25px 0 0 25px;
 
   &-flex {
@@ -27,21 +26,35 @@
     align-items: flex-end;
     justify-content: center;
     border-radius: 20px;
-    box-shadow: rgba(22, 27, 29, 0.25) 8px 8px 12px,
-      rgba(250, 251, 255, 0.3) -10px -10px 14px;
+    box-shadow: inset rgba(22, 27, 29, 0.25) -4px -4px 3px,
+      inset rgba(250, 251, 255, 0.3) 4px 4px 3px,
+      rgba(22, 27, 29, 0.25) 8px 8px 12px,
+      rgba(250, 251, 255, 0.3) -8px -8px 12px;
     pointer-events: all;
     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
     cursor: pointer;
 
     &:hover {
-      box-shadow: rgba(22, 27, 29, 0.25) 6px 6px 8px,
+      box-shadow: inset rgba(22, 27, 29, 0.25) -2px -2px 3px,
+        inset rgba(250, 251, 255, 0.3) 3px 3px 4px,
+        rgba(22, 27, 29, 0.25) 6px 6px 8px,
         rgba(250, 251, 255, 0.3) -6px -6px 8px;
       transform: translateY(2px);
 
       & .recipes__holder-recipe--image {
-        box-shadow: rgba(22, 27, 29, 0.25) 3px 3px 8px,
+        box-shadow: inset rgba(22, 27, 29, 0.25) -1px -1px 3px,
+          inset rgba(250, 251, 255, 0.3) 1px 1px 3px,
+          rgba(22, 27, 29, 0.25) 3px 3px 8px,
           rgba(250, 251, 255, 0.3) -3px -3px 8px;
       }
+    }
+
+    &:active {
+      box-shadow: inset rgba(22, 27, 29, 0.25) 2px 2px 3px,
+        inset rgba(250, 251, 255, 0.3) -2px -2px 3px,
+        rgba(22, 27, 29, 0.25) -2px -2px 2px,
+        rgba(250, 251, 255, 0.3) 2px 2px 2px;
+      transform: translateY(3px);
     }
 
     &--container {
@@ -66,8 +79,10 @@
       height: 80%;
       border-radius: 15px;
       background-color: #eff2f9;
-      box-shadow: rgba(22, 27, 29, 0.25) 5px 5px 15px,
-        rgba(250, 251, 255, 0.3) -5px -5px 15px;
+      box-shadow: inset rgba(22, 27, 29, 0.25) -2px -2px 4px,
+        inset rgba(250, 251, 255, 0.3) 2px 2px 4px,
+        rgba(22, 27, 29, 0.25) 5px 5px 10px,
+        rgba(250, 251, 255, 0.3) -5px -5px 10px;
       transition: box-shadow 0.1s ease-in-out;
     }
 

@@ -195,9 +195,14 @@ const controlAppView = function (string) {
   AppView.renderAppMode(currentAppMode, changeAppMode, btnText);
 };
 
+// const controlErrorClick = function (e) {
+//   console.log('There it is the bastard');
+// };
+
 const init = function () {
   AppView.addHandlerRender(controlRecipeInput);
   AppView.addHandlerAppView(controlAppView);
+  // AppView.addHandlerError(controlErrorClick);
   HolderView.addHandlerLoadHolder(controlLoadHolder);
   HolderView.addHandlerRenderHolder(controlHolderView);
   HolderView.addHandlerHolderClick(controlHolderClick);
