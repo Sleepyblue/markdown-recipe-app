@@ -47,6 +47,7 @@ ___
 - [x] Save recipe to `localStorage` and render the bookmark
 - [x] Render bookmark
 - [x] Restrict similar recipe titles and recognise changes made to an already existing recipe
+- [ ] Re-render saved changes
 - [ ] Implement a 'Neuromorphic' application design **[ONGOING]**
 - [ ] Implement a Metadata block recognition (servings, recipe type, preparation time, cooking time, nutritional information, image links, more?)
 - [ ] If metadata block has multiple images associate a gallery to the recipe
@@ -126,10 +127,10 @@ ___
 
 1.  Fork the project
 2.  Clone the project
-3.  Follow the instructions in the console:
-4.  Navigate to the project directory cd markdown-recipe-app
-5.  Install the dependencies npm install
-6.  Run the project npm run dev
+3.  Follow the instructions in the console
+4.  Navigate to the project directory `cd markdown-recipe-app`
+5.  Install the dependencies `npm install`
+6.  Run the project `npm run dev`
 
 <br>
 
