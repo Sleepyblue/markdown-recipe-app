@@ -1,8 +1,8 @@
 'use strict';
 
 import * as model from './model.js';
-import AppView from './views/AppView.js';
-import DeviceView from './views/DeviceView';
+import AppView from './views/appView.js';
+import DeviceView from './views/deviceView';
 import HolderView from './views/holderView.js';
 
 function updateRecipeState(recipeString, name, ingredients, cookware) {
