@@ -101,7 +101,7 @@ ___
 
 ## Demo
 
-Live view by clicking the badge: [![Netlify Status](https://api.netlify.com/api/v1/badges/7ffa5621-f971-4a83-8647-fcc6df6f9366/deploy-status)](https://app.netlify.com/sites/markdown-recipe-app/deploys)
+Live view by clicking the badge: [![Netlify Status](https://api.netlify.com/api/v1/badges/7ffa5621-f971-4a83-8647-fcc6df6f9366/deploy-status)](https://markdown-recipe-app.netlify.app)
 
 You can also clone the project and open it in localhost 😄
 
