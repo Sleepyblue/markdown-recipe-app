@@ -1,4 +1,4 @@
-# Table of Contents
+## Table of Contents
 
 >*(This is an ongoing Project, so bugs and feature changes are expected)*
 
@@ -91,7 +91,6 @@ ___
 >**EXAMPLE:**<br>
 >Slice @apple_(500&grams) and use @soft butter_(150&grams). *(STEP 1)* <br>
 >Cook it on and #oven using an #iron skillet_ *STEP 2)*
-
 
 <br>
 
