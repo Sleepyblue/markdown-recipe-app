@@ -3,9 +3,10 @@
 import * as model from './model.js';
 import AppView from './views/appView.js';
 import DeviceView from './views/deviceView';
+import holderView from './views/holderView.js';
 import HolderView from './views/holderView.js';
 
-function updateRecipeState(recipeString, name, ingredients, cookware) {
+function updateRecipeState(recipeString, name, ingredients, cookware, image) {
   model.saveOriginalInput(recipeString);
   model.saveRecipeName(name);
   model.sliceIngredients(ingredients);
@@ -13,6 +14,7 @@ function updateRecipeState(recipeString, name, ingredients, cookware) {
   model.sliceUnit(ingredients);
   if (cookware !== null) model.sliceCookware(cookware);
   model.convertSteps(recipeString, model.recipeState);
+  model.sliceImage(image);
 }
 
 function renderRecipeState(dataSource, cookware) {
@@ -50,6 +52,7 @@ const controlRecipeInput = async function (string) {
     const recipeName = AppView.extractRecipeName(string);
     const ingredientsData = AppView.extractIngredients(string);
     const cookwareData = AppView.extractCookware(string);
+    const images = AppView.extractImages(string);
 
     // ERROR CATCHING - No recipe name or zero ingredients
     if (!recipeName) throw new Error(`Insert a recipe name! (## Example)`);
@@ -116,7 +119,13 @@ const controlRecipeInput = async function (string) {
 
     console.log('Running past the breaking point');
     // Save recipe input into 'recipeState'
-    updateRecipeState(string, recipeName, ingredientsData, cookwareData);
+    updateRecipeState(
+      string,
+      recipeName,
+      ingredientsData,
+      cookwareData,
+      images
+    );
 
     // Create and render elements on preview based on markdown input
     renderRecipeState(model.recipeState, cookwareData);
@@ -148,8 +157,10 @@ const controlHolderView = function () {
   if (checker) {
     model.pushToRecipeHolder(model.recipeState);
     model.saveLocalStorage(model.recipeHolder);
-    console.log(model.recipeHolder);
     HolderView.renderHolder(model.recipeState.recipeName);
+    console.log(model.recipeState.image);
+
+    HolderView.renderHolderRecipeImage(model.recipeState.image);
     model.cleanState();
   }
 };
@@ -159,11 +170,14 @@ const controlLoadHolder = function () {
   const holders = model.getLocalStorage();
   if (!holders) return;
 
+  console.log(holders);
+
   model.recipeHolder.push(...holders);
   console.log(model.recipeState);
 
-  holders.forEach((holder) => {
+  holders.forEach((holder, i) => {
     HolderView.renderHolder(holder.recipeName);
+    HolderView.renderHolderRecipeImage(holder.images, i);
   });
 };
 

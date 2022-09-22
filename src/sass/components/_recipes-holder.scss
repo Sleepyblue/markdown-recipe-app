@@ -26,6 +26,11 @@
     align-items: flex-end;
     justify-content: center;
     border-radius: 20px;
+    background-image: linear-gradient(
+      -45deg,
+      rgba(228, 235, 241, 0.98),
+      rgba(239, 242, 249, 0.98)
+    );
     box-shadow: inset rgba(22, 27, 29, 0.25) -4px -4px 3px,
       inset rgba(250, 251, 255, 0.3) 4px 4px 3px,
       rgba(22, 27, 29, 0.25) 8px 8px 12px,
@@ -46,6 +51,15 @@
           inset rgba(250, 251, 255, 0.3) 1px 1px 3px,
           rgba(22, 27, 29, 0.25) 3px 3px 8px,
           rgba(250, 251, 255, 0.3) -3px -3px 8px;
+
+        &-el {
+          -webkit-mask-image: linear-gradient(
+            to right,
+            #eff2f9 80%,
+            transparent
+          );
+          mask-image: linear-gradient(to right, #eff2f9 80%, transparent);
+        }
       }
     }
 
@@ -60,11 +74,7 @@
     &--container {
       width: 100%;
       height: 100%;
-      background-color: linear-gradient(
-        -45deg,
-        rgba(0, 0, 0, 0.22),
-        rgba(239, 242, 249, 0.25)
-      );
+
       border-radius: 20px;
       display: flex;
       align-items: center;
@@ -75,6 +85,7 @@
     }
 
     &--image {
+      position: relative;
       width: 50%;
       height: 80%;
       border-radius: 15px;
@@ -84,6 +95,56 @@
         rgba(22, 27, 29, 0.25) 5px 5px 10px,
         rgba(250, 251, 255, 0.3) -5px -5px 10px;
       transition: box-shadow 0.1s ease-in-out;
+
+      &-el {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 88%;
+        height: 88%;
+        border-radius: 15px;
+        // background-image: url('https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        -webkit-mask-image: linear-gradient(to right, #eff2f9 5%, transparent);
+        mask-image: linear-gradient(to right, #eff2f9 5%, transparent);
+
+        // To fiddle with later
+        // -webkit-mask: linear-gradient(
+        //     to top,
+        //     transparent 10%,
+        //     #fff 15% 90%,
+        //     transparent 95%
+        //   ),
+        //   linear-gradient(
+        //     to left,
+        //     transparent 10%,
+        //     #fff 15% 90%,
+        //     transparent 95%
+        //   );
+        // -webkit-mask-size: 110% 110%;
+        // -webkit-mask-position: center;
+        // -webkit-mask-repeat: no-repeat;
+        // // -webkit-mask-composite: source-in;
+        // mask: linear-gradient(
+        //     to top,
+        //     transparent 10%,
+        //     #fff 15% 90%,
+        //     transparent 95%
+        //   ),
+        //   linear-gradient(
+        //     to left,
+        //     transparent 10%,
+        //     #fff 15% 90%,
+        //     transparent 95%
+        //   );
+        // mask-size: 110% 110%;
+        // mask-position: center;
+        // mask-repeat: no-repeat;
+        // mask-composite: intersect;
+      }
     }
 
     &--info {

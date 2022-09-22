@@ -6,7 +6,9 @@ class HolderView {
     const markup = `
         <div class="recipes__holder-recipe">
           <div class="recipes__holder-recipe--container">
-            <div class="recipes__holder-recipe--image"></div> 
+            <div class="recipes__holder-recipe--image">
+              <div class="recipes__holder-recipe--image-el"></div>
+            </div> 
             <div class="recipes__holder-recipe--info">
               <div class="recipes__holder-recipe--type">Breakfast (ph)</div>
               <div class="recipes__holder-recipe--title">${recipeTitle}</div>
@@ -17,6 +19,24 @@ class HolderView {
        `;
 
     this._holder.insertAdjacentHTML('beforeend', markup);
+  }
+
+  renderHolderRecipeImage(imageLink, index = undefined) {
+    if (index === undefined) {
+      const holders = document.querySelectorAll('.recipes__holder-recipe');
+      const lastInsertedHolder = holders[holders.length - 1].querySelector(
+        '.recipes__holder-recipe--image-el'
+      );
+      lastInsertedHolder.style.backgroundImage = `url(${imageLink})`;
+    }
+
+    if (index !== undefined) {
+      const imageEl = document.querySelectorAll(
+        '.recipes__holder-recipe--image-el'
+      );
+      console.log(`HOLDER ${index}: ${imageEl[index]}`);
+      imageEl[index].style.backgroundImage = `url(${imageLink})`;
+    }
   }
 
   addHandlerRenderHolder(handler) {

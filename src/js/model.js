@@ -12,6 +12,7 @@ export let appState = {
 };
 
 export let recipeState = {
+  image: '',
   originalString: '',
   recipeName: '',
   ingredients: [],
@@ -77,6 +78,11 @@ export const sliceCookware = function (ckwArr) {
   });
 };
 
+export const sliceImage = function (images) {
+  const slicedImage = images[0].trim().slice(7, -1);
+  recipeState.image = slicedImage;
+};
+
 export const ingredientObject = function (
   ing = undefined,
   qt = undefined,
@@ -138,16 +144,23 @@ export const convertSteps = function (string, state) {
   recursion(i);
 
   const newLineRegex = /\r?\n/;
+  const metadataFilter = /\>/;
   const stepsArr = stringArr[0]
     .split(newLineRegex)
     .filter((element) => element);
-  stepsArr.forEach((step) =>
-    !step.includes('##') ? recipeState.steps.push(step) : ''
-  );
+
+  stepsArr.forEach((step) => {
+    !step.includes('##') && !metadataFilter.test(step)
+      ? recipeState.steps.push(step)
+      : '';
+  });
+
+  console.log(recipeState.steps);
 };
 
 export const pushToRecipeHolder = function (state) {
   recipeHolder.push({
+    images: state.image,
     originalString: state.originalString,
     recipeName: state.recipeName,
     ingredients: [...state.ingredients],
@@ -179,6 +192,7 @@ export const getHolderClickingData = function (elementTitle) {
 
 export const cleanState = function () {
   recipeState = {
+    image: '',
     originalString: '',
     recipeName: '',
     ingredients: [],

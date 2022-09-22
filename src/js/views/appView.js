@@ -9,6 +9,11 @@ class AppView {
   _stepsList;
   _ckwList;
 
+  extractImages(string) {
+    const imagesRegex = /(Image:)\s(.*)/gi;
+    return string.match(imagesRegex);
+  }
+
   extractRecipeName(string) {
     const recipeNameRegex = /^#{2}[\s\w\W].*?$/im;
     return string.match(recipeNameRegex);
@@ -34,6 +39,7 @@ class AppView {
   renderBaseMarkup() {
     const markup = `
     <div class="preview__title-container">  
+      <div class="preview__title-image"></div>
       <h2 class="preview__recipe-name"></h2>
     </div>
     <div class="preview__steps-container">  
