@@ -2,7 +2,7 @@ class HolderView {
   _holder = document.querySelector('.recipes__holder-flex');
   _form = document.querySelector('.markdown__form');
 
-  renderHolder(recipeTitle) {
+  renderHolder(recipeTitle, recipeType, recipeNutrition, recipeTime) {
     const markup = `
         <div class="recipes__holder-recipe">
           <div class="recipes__holder-recipe--container">
@@ -10,9 +10,9 @@ class HolderView {
               <div class="recipes__holder-recipe--image-el"></div>
             </div> 
             <div class="recipes__holder-recipe--info">
-              <div class="recipes__holder-recipe--type">Breakfast (ph)</div>
+              <div class="recipes__holder-recipe--type">${recipeType}</div>
               <div class="recipes__holder-recipe--title">${recipeTitle}</div>
-              <div class="recipes__holder-recipe--details">587 Kcal, 10min (ph)</div>
+              <div class="recipes__holder-recipe--details">Nutrition: ${recipeNutrition}, Time: ${recipeTime} min</div>
             </div>
           </div> 
         </div>
@@ -34,9 +34,16 @@ class HolderView {
       const imageEl = document.querySelectorAll(
         '.recipes__holder-recipe--image-el'
       );
-      console.log(`HOLDER ${index}: ${imageEl[index]}`);
       imageEl[index].style.backgroundImage = `url(${imageLink})`;
     }
+  }
+
+  updateAndRerenderHolders(localStorageHolders) {
+    if (!localStorageHolders) return;
+
+    localStorageHolders.forEach((holder, i) => {
+      this.renderHolderRecipeImage(holder.images, i);
+    });
   }
 
   addHandlerRenderHolder(handler) {

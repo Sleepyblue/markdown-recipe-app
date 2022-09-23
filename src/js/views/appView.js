@@ -4,10 +4,31 @@ class AppView {
   _markdown = document.querySelector('.app__mode-markdown');
   _preview = document.querySelector('.app__mode-preview');
   _editBtn = document.querySelector('.btn__app-mode');
+  _recipeImage;
   _recipeTitle;
   _ingList;
   _stepsList;
   _ckwList;
+
+  extractType(string) {
+    const typeRegex = /(Type:)\s(.*)/gi;
+    return string.match(typeRegex);
+  }
+
+  extractNutrition(string) {
+    const nutritionRegex = /(Calories:)\s(.*)/gi;
+    return string.match(nutritionRegex);
+  }
+
+  extractTime(string) {
+    const timeRegex = /(Time:)\s(.*)/gi;
+    return string.match(timeRegex);
+  }
+
+  extractServings(string) {
+    const servingsRegex = /(Servings:)\s(.*)/gi;
+    return string.match(servingsRegex);
+  }
 
   extractImages(string) {
     const imagesRegex = /(Image:)\s(.*)/gi;
@@ -38,9 +59,15 @@ class AppView {
 
   renderBaseMarkup() {
     const markup = `
-    <div class="preview__title-container">  
+    <div class="preview__title">  
       <div class="preview__title-image"></div>
-      <h2 class="preview__recipe-name"></h2>
+      <div class="preview__title-details">
+        <h2 class="preview__title_recipe-type"></h2>
+        <h2 class="preview__title_recipe-name"></h2>
+        <h2 class="preview__title_recipe-nutrition"></h2>
+        <h2 class="preview__title_recipe-time"></h2>
+        <h2 class="preview__title_recipe-servings"></h2>
+      </div>
     </div>
     <div class="preview__steps-container">  
       <ul class="preview__list-steps"></ul>
@@ -55,14 +82,41 @@ class AppView {
     this._preview.innerHTML = '';
     this._preview.insertAdjacentHTML('beforeend', markup);
 
-    this._recipeTitle = document.querySelector('.preview__recipe-name');
+    this._recipeImage = document.querySelector('.preview__title-image');
+    this._recipeType = document.querySelector('.preview__title_recipe-type');
+    this._recipeTitle = document.querySelector('.preview__title_recipe-name');
+    this._recipeNutrition = document.querySelector(
+      '.preview__title_recipe-nutrition'
+    );
+    this._recipeTime = document.querySelector('.preview__title_recipe-time');
+    this._recipeServings = document.querySelector(
+      '.preview__title_recipe-servings'
+    );
     this._ingList = document.querySelector('.preview__list-ingredients');
     this._stepsList = document.querySelector('.preview__list-steps');
     this._ckwList = document.querySelector('.preview__list-cookware');
   }
 
+  renderRecipeImage(imageLink) {
+    this._recipeImage.style.backgroundImage = `url(${imageLink})`;
+  }
+
+  renderRecipeType(recipeType) {
+    this._recipeType.textContent = recipeType;
+  }
+
   renderRecipeTitle(recipeTitle) {
     this._recipeTitle.textContent = recipeTitle;
+  }
+
+  renderRecipeNutrition(recipeNutrition) {
+    this._recipeNutrition.textContent = `Calories: ${recipeNutrition}`;
+  }
+  renderRecipeTime(recipeTime) {
+    this._recipeTime.textContent = `Time: ${recipeTime}`;
+  }
+  renderRecipeServings(recipeServings) {
+    this._recipeServings.textContent = `Servings: ${recipeServings}`;
   }
 
   renderIngredientsList(ingredientsArr) {

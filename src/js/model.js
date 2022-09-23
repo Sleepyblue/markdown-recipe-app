@@ -12,6 +12,10 @@ export let appState = {
 };
 
 export let recipeState = {
+  type: '',
+  nutrition: '',
+  time: '',
+  servings: '',
   image: '',
   originalString: '',
   recipeName: '',
@@ -26,6 +30,38 @@ let i = 0;
 
 export const saveOriginalInput = function (string) {
   recipeState.originalString = string;
+};
+
+export const sliceType = function (array) {
+  const slicedType = array[0]
+    .slice(array[0].indexOf(' '), array[0].length)
+    .trim();
+  recipeState.type = slicedType;
+  return slicedType;
+};
+
+export const sliceNutrition = function (array) {
+  const slicedNutrition = array[0]
+    .slice(array[0].indexOf(' '), array[0].length)
+    .trim();
+  recipeState.nutrition = slicedNutrition;
+  return slicedNutrition;
+};
+
+export const sliceTime = function (array) {
+  const slicedTime = array[0]
+    .slice(array[0].indexOf(' '), array[0].length)
+    .trim();
+  recipeState.time = slicedTime;
+  return slicedTime;
+};
+
+export const sliceServings = function (array) {
+  const slicedServings = array[0]
+    .slice(array[0].indexOf(' '), array[0].length)
+    .trim();
+  recipeState.servings = slicedServings;
+  return slicedServings;
 };
 
 export const sliceRecipeName = function (dataArr) {
@@ -160,6 +196,10 @@ export const convertSteps = function (string, state) {
 
 export const pushToRecipeHolder = function (state) {
   recipeHolder.push({
+    type: state.type,
+    nutrition: state.nutrition,
+    time: state.time,
+    servings: state.servings,
     images: state.image,
     originalString: state.originalString,
     recipeName: state.recipeName,
@@ -185,13 +225,16 @@ export const getLocalStorage = function () {
 
 export const getHolderClickingData = function (elementTitle) {
   const holders = getLocalStorage();
-  console.log(holders);
 
   return holders;
 };
 
 export const cleanState = function () {
   recipeState = {
+    type: '',
+    nutrition: '',
+    time: '',
+    servings: '',
     image: '',
     originalString: '',
     recipeName: '',
