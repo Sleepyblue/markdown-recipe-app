@@ -157,7 +157,7 @@ export const convertSteps = function (string, state) {
     if (ingredientsRegex.test(stringArr[0])) {
       stringArr[0] = stringArr[0].replace(
         ingredientsRegex,
-        `${state.ingredients[i].qt === 'SKIP' ? '' : state.ingredients[i].qt}${
+        `${state.ingredients[i].qt === 'SKIP' ? '' : state.ingredients[i].qt} ${
           state.ingredients[i].unit === 'SKIP' ? '' : state.ingredients[i].unit
         }${state.ingredients[i].unit === 'SKIP' ? '' : ' of'} ${
           state.ingredients[i].ing
