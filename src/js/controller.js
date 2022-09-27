@@ -250,6 +250,8 @@ const controlHolderClick = function (element) {
       AppView.renderCookwareList(holder.cookware);
     }
   });
+
+  console.log(model.recipeState);
 };
 
 const controlDeviceView = function (string) {

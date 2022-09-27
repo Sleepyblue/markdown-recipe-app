@@ -88,7 +88,7 @@ export const sliceQuantity = function (dataArr) {
   dataArr.map((qt) => {
     let slicedQt;
     !qt.includes('_(')
-      ? (slicedQt = `SKIP`)
+      ? (slicedQt = ``)
       : (slicedQt = qt.slice(qt.indexOf('(') + 1, qt.indexOf('&')));
     ingredientObject(undefined, slicedQt);
   });
@@ -98,7 +98,7 @@ export const sliceUnit = function (dataArr) {
   dataArr.map((unit) => {
     let slicedUnit;
     !unit.includes('&')
-      ? (slicedUnit = `SKIP`)
+      ? (slicedUnit = ``)
       : (slicedUnit = unit.slice(unit.indexOf('&') + 1, unit.indexOf(')')));
     ingredientObject(undefined, undefined, slicedUnit);
   });
@@ -157,9 +157,9 @@ export const convertSteps = function (string, state) {
     if (ingredientsRegex.test(stringArr[0])) {
       stringArr[0] = stringArr[0].replace(
         ingredientsRegex,
-        `${state.ingredients[i].qt === 'SKIP' ? '' : state.ingredients[i].qt} ${
-          state.ingredients[i].unit === 'SKIP' ? '' : state.ingredients[i].unit
-        }${state.ingredients[i].unit === 'SKIP' ? '' : ' of'} ${
+        `${state.ingredients[i].qt === '' ? '' : state.ingredients[i].qt} ${
+          state.ingredients[i].unit === '' ? '' : state.ingredients[i].unit
+        }${state.ingredients[i].unit === '' ? '' : ' of'} ${
           state.ingredients[i].ing
         }`
       );
@@ -190,8 +190,6 @@ export const convertSteps = function (string, state) {
       ? recipeState.steps.push(step)
       : '';
   });
-
-  console.log(recipeState.steps);
 };
 
 export const pushToRecipeHolder = function (state) {

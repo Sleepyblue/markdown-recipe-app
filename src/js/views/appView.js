@@ -123,7 +123,7 @@ class AppView {
     ingredientsArr.forEach((data) => {
       const markupItem = `
       <li>${data.qt ? data.qt : ''} ${
-        data.unit !== 'SKIP' ? data.unit + ' of' : ''
+        data.unit !== '' ? data.unit + ' of' : ''
       } ${data.ing}</li>
       `;
 
