@@ -10,47 +10,28 @@ class AppView {
   _stepsList;
   _ckwList;
 
-  extractType(string) {
+  extractData(string) {
     const typeRegex = /(Type:)\s(.*)/gi;
-    return string.match(typeRegex);
-  }
-
-  extractNutrition(string) {
     const nutritionRegex = /(Calories:)\s(.*)/gi;
-    return string.match(nutritionRegex);
-  }
-
-  extractTime(string) {
     const timeRegex = /(Time:)\s(.*)/gi;
-    return string.match(timeRegex);
-  }
-
-  extractServings(string) {
     const servingsRegex = /(Servings:)\s(.*)/gi;
-    return string.match(servingsRegex);
-  }
-
-  extractImages(string) {
     const imagesRegex = /(Image:)\s(.*)/gi;
-    return string.match(imagesRegex);
-  }
-
-  extractRecipeName(string) {
-    const recipeNameRegex = /^#{2}[\s\w\W].*?$/im;
-    return string.match(recipeNameRegex);
-  }
-
-  extractIngredients(string) {
+    const titleRegex = /^#{1,}.*$/im;
     const ingredientsRegex =
       /\@(\b[a-zA-Z\s\-]+_)\(\d+\/?\d?\&+\b\w*\)|\@(\b[a-zA-Z\s\-]*)_|\@\b[a-zA-Z\-]+/gim;
-
-    return string.match(ingredientsRegex);
-  }
-
-  extractCookware(string) {
     const cookwareRegex = /\#\b[a-zA-Z0-9\-\s]+\_|\#\b[a-zA-Z0-9]+/gim;
 
-    return string.match(cookwareRegex);
+    return {
+      extractedString: string,
+      extractedType: string.match(typeRegex),
+      extractedNutrition: string.match(nutritionRegex),
+      extractedTime: string.match(timeRegex),
+      extractedServings: string.match(servingsRegex),
+      extractedImages: string.match(imagesRegex),
+      extractedTitle: string.match(titleRegex),
+      extractedIngredients: string.match(ingredientsRegex),
+      extractedCookware: string.match(cookwareRegex),
+    };
   }
 
   renderMarkdownOriginalString(originalMarkdownString) {

@@ -67,26 +67,16 @@ function saveChangedRecipeDetails(recipeString, recipeName) {
 
 const controlRecipeInput = async function (string) {
   try {
-    // Extract recipe NAME, INGREDIENTS AND COOKWARE
-    // Store each value into variables
-    const recipeType = AppView.extractType(string);
-    const recipeName = AppView.extractRecipeName(string);
-    const recipeNutrition = AppView.extractNutrition(string);
-    const recipeTime = AppView.extractTime(string);
-    const recipeServings = AppView.extractServings(string);
-    const ingredientsData = AppView.extractIngredients(string);
-    const cookwareData = AppView.extractCookware(string);
-    const images = AppView.extractImages(string);
-
-    const slicedType = model.sliceType(recipeType);
-    const slicedNutrition = model.sliceNutrition(recipeNutrition);
-    const slicedTime = model.sliceTime(recipeTime);
-    const slicedServings = model.sliceServings(recipeServings);
+    const extractedData = AppView.extractData(string);
 
     // ERROR CATCHING - No recipe name or zero ingredients
-    if (!recipeName) throw new Error(`Insert a recipe name! (## Example)`);
-    if (!ingredientsData)
+    if (!extractedData.extractedTitle)
+      throw new Error(`Insert a recipe name! (## Example)`);
+    if (!extractedData.extractedIngredients)
       throw new Error(`Insert at least one ingredient! (@Ingredient)`);
+
+    const data = model.sliceData(extractedData);
+    console.log(data);
 
     // ERROR CLEANING
     AppView.cleanError();
@@ -180,6 +170,7 @@ const controlRecipeInput = async function (string) {
     console.log(model.recipeState);
   } catch (err) {
     AppView.renderError(err.message);
+    console.error(err);
   }
 };
 
