@@ -1,6 +1,5 @@
 class Ingredient {
   constructor(ingredient, quantity, unit) {
-    // this.name = recipeName;
     this.ing = ingredient;
     this.qt = quantity;
     this.unit = unit;
@@ -80,6 +79,9 @@ export const sliceIngredients = function (dataArr) {
       1,
       ing.includes('_') ? ing.indexOf('_') : ing.length
     );
+
+    console.log(slicedIng);
+
     ingredientObject(slicedIng);
   });
 };

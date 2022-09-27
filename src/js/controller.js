@@ -218,7 +218,6 @@ const controlLoadHolder = function () {
   if (!holders) return;
 
   model.recipeHolder.push(...holders);
-  console.log(model.recipeState);
 
   holders.forEach((holder, i) => {
     HolderView.renderHolder(
