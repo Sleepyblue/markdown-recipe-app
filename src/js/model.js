@@ -26,32 +26,32 @@ export let recipeState = {
 export let recipeHolder = [];
 
 export const sliceData = function (object) {
-  const slicedType = object.extractedType[0]
-    .slice(object.extractedType[0].indexOf(' '), object.extractedType[0].length)
+  const slicedType = object.extractedType
+    .slice(object.extractedType.indexOf(' '), object.extractedType.length)
     .trim();
 
-  const slicedNutrition = object.extractedNutrition[0]
+  const slicedNutrition = object.extractedNutrition
     .slice(
-      object.extractedNutrition[0].indexOf(' '),
-      object.extractedNutrition[0].length
+      object.extractedNutrition.indexOf(' '),
+      object.extractedNutrition.length
     )
     .trim();
 
-  const slicedTime = object.extractedTime[0]
-    .slice(object.extractedTime[0].indexOf(' '), object.extractedTime[0].length)
+  const slicedTime = object.extractedTime
+    .slice(object.extractedTime.indexOf(' '), object.extractedTime.length)
     .trim();
 
-  const slicedServings = object.extractedServings[0]
+  const slicedServings = object.extractedServings
     .slice(
-      object.extractedServings[0].indexOf(' '),
-      object.extractedServings[0].length
+      object.extractedServings.indexOf(' '),
+      object.extractedServings.length
     )
     .trim();
 
-  const slicedImages = object.extractedImages[0].trim().slice(7, -1);
+  const slicedImages = object.extractedImages.trim().slice(7, -1);
 
-  const slicedTitle = object.extractedTitle[0]
-    .slice(2, object.extractedTitle[0].length)
+  const slicedTitle = object.extractedTitle
+    .slice(2, object.extractedTitle.length)
     .trim();
 
   const slicedIngredients = [];

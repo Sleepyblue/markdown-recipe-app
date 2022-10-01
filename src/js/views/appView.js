@@ -23,12 +23,12 @@ class AppView {
 
     return {
       extractedString: string,
-      extractedType: string.match(typeRegex),
-      extractedNutrition: string.match(nutritionRegex),
-      extractedTime: string.match(timeRegex),
-      extractedServings: string.match(servingsRegex),
-      extractedImages: string.match(imagesRegex),
-      extractedTitle: string.match(titleRegex),
+      extractedType: string.match(typeRegex)[0],
+      extractedNutrition: string.match(nutritionRegex)[0],
+      extractedTime: string.match(timeRegex)[0],
+      extractedServings: string.match(servingsRegex)[0],
+      extractedImages: string.match(imagesRegex)[0],
+      extractedTitle: string.match(titleRegex)[0],
       extractedIngredients: string.match(ingredientsRegex),
       extractedCookware: string.match(cookwareRegex),
     };
