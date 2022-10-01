@@ -26,33 +26,18 @@ export let recipeState = {
 export let recipeHolder = [];
 
 export const sliceData = function (object) {
-  const slicedType = object.extractedType
-    .slice(object.extractedType.indexOf(' '), object.extractedType.length)
-    .trim();
+  const slicedObject = {};
+  const avoidKeys = /Ingredients|Cookware|String/;
 
-  const slicedNutrition = object.extractedNutrition
-    .slice(
-      object.extractedNutrition.indexOf(' '),
-      object.extractedNutrition.length
-    )
-    .trim();
+  Object.entries(object).forEach(([key, value]) => {
+    if (!avoidKeys.test(key))
+      return (slicedObject[key.replace('extracted', 'sliced')] = value
+        .slice(value.indexOf(' '), value.length)
+        .trim());
+  });
 
-  const slicedTime = object.extractedTime
-    .slice(object.extractedTime.indexOf(' '), object.extractedTime.length)
-    .trim();
-
-  const slicedServings = object.extractedServings
-    .slice(
-      object.extractedServings.indexOf(' '),
-      object.extractedServings.length
-    )
-    .trim();
-
-  const slicedImages = object.extractedImages.trim().slice(7, -1);
-
-  const slicedTitle = object.extractedTitle
-    .slice(2, object.extractedTitle.length)
-    .trim();
+  console.log(object);
+  console.log(slicedObject);
 
   const slicedIngredients = [];
   object.extractedIngredients.map((item) => {
