@@ -1,3 +1,9 @@
+# 🚧💧🌱 Growing with a Giggle
+Under the watchful eye of Mother Nature, I'm tending to this seedling of a project. While I pour my creative juices into revamping both the project and the README, I've decided to keep the soon-to-be old README content accessible. So go ahead, unfold the virtual parchment and indulge your curiosity if you feel like it! 
+
+<details>
+  <summary>Let me take a look...</summary>
+	
 ## Table of Contents
 
 >*(This is an ongoing Project, so bugs and feature changes are expected)*
@@ -138,3 +144,9 @@ ___
 ## License
 
 MIT
+
+  This is the previous version of the README.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ...
+  
+</details>
