@@ -1,7 +1,7 @@
 class Ingredient {
   constructor(ingredient, quantity, unit) {
-    this.ing = ingredient;
-    this.qt = quantity;
+    this.ingredient = ingredient;
+    this.quantity = quantity;
     this.unit = unit;
   }
 }
@@ -25,124 +25,61 @@ export let recipeState = {
 
 export let recipeHolder = [];
 
-let i = 0;
+export const sliceData = function (object) {
+  const slicedObject = {};
+  const avoidKeys = /Ingredients|Cookware|String/;
 
-export const saveOriginalInput = function (string) {
-  recipeState.originalString = string;
-};
-
-export const sliceType = function (array) {
-  const slicedType = array[0]
-    .slice(array[0].indexOf(' '), array[0].length)
-    .trim();
-  recipeState.type = slicedType;
-  return slicedType;
-};
-
-export const sliceNutrition = function (array) {
-  const slicedNutrition = array[0]
-    .slice(array[0].indexOf(' '), array[0].length)
-    .trim();
-  recipeState.nutrition = slicedNutrition;
-  return slicedNutrition;
-};
-
-export const sliceTime = function (array) {
-  const slicedTime = array[0]
-    .slice(array[0].indexOf(' '), array[0].length)
-    .trim();
-  recipeState.time = slicedTime;
-  return slicedTime;
-};
-
-export const sliceServings = function (array) {
-  const slicedServings = array[0]
-    .slice(array[0].indexOf(' '), array[0].length)
-    .trim();
-  recipeState.servings = slicedServings;
-  return slicedServings;
-};
-
-export const sliceRecipeName = function (dataArr) {
-  const slicedName = dataArr[0].slice(2, dataArr[0].length).trim();
-  return slicedName;
-};
-
-export const saveRecipeName = function (dataArr) {
-  const slicedName = dataArr[0].slice(2, dataArr[0].length).trim();
-  recipeState.recipeName = slicedName;
-};
-
-export const sliceIngredients = function (dataArr) {
-  dataArr.map((ing) => {
-    const slicedIng = ing.slice(
-      1,
-      ing.includes('_') ? ing.indexOf('_') : ing.length
-    );
-
-    console.log(slicedIng);
-
-    ingredientObject(slicedIng);
+  Object.entries(object).forEach(([key, value]) => {
+    if (!avoidKeys.test(key))
+      return (slicedObject[key.replace('extracted', 'sliced')] = value
+        .slice(value.indexOf(' '), value.length)
+        .trim());
   });
-};
 
-export const sliceQuantity = function (dataArr) {
-  dataArr.map((qt) => {
-    let slicedQt;
-    !qt.includes('_(')
-      ? (slicedQt = ``)
-      : (slicedQt = qt.slice(qt.indexOf('(') + 1, qt.indexOf('&')));
-    ingredientObject(undefined, slicedQt);
-  });
-};
+  console.log(object);
+  console.log(slicedObject);
 
-export const sliceUnit = function (dataArr) {
-  dataArr.map((unit) => {
-    let slicedUnit;
-    !unit.includes('&')
-      ? (slicedUnit = ``)
-      : (slicedUnit = unit.slice(unit.indexOf('&') + 1, unit.indexOf(')')));
-    ingredientObject(undefined, undefined, slicedUnit);
-  });
-};
-
-export const sliceCookware = function (ckwArr) {
-  ckwArr.forEach((item) => {
-    let slicedItem = item.slice(
+  const slicedIngredients = [];
+  object.extractedIngredients.map((item) => {
+    const ingredient = item.slice(
       1,
       item.includes('_') ? item.indexOf('_') : item.length
     );
-    recipeState.cookware.push(slicedItem);
+
+    let quantity;
+    item.includes('_(')
+      ? (quantity = item.slice(item.indexOf('(') + 1, item.indexOf('&')))
+      : (quantity = ``);
+
+    let unit;
+    !item.includes('&')
+      ? (unit = ``)
+      : (unit = item.slice(item.indexOf('&') + 1, item.indexOf(')')));
+
+    const ingredientsObject = new Ingredient(ingredient, quantity, unit);
+    slicedIngredients.push(ingredientsObject);
   });
-};
 
-export const sliceImage = function (images) {
-  const slicedImage = images[0].trim().slice(7, -1);
-  recipeState.image = slicedImage;
-};
+  const slicedCookware = [];
+  object.extractedCookware.forEach((item) => {
+    let cookware = item.slice(
+      1,
+      item.includes('_') ? item.indexOf('_') : item.length
+    );
+    slicedCookware.push(cookware);
+  });
 
-export const ingredientObject = function (
-  ing = undefined,
-  qt = undefined,
-  unit = undefined
-) {
-  const ingObj = new Ingredient();
-
-  if (ing !== undefined) {
-    ingObj.ing = ing;
-    recipeState.ingredients.push(ingObj);
-  }
-
-  if (qt !== undefined) {
-    recipeState.ingredients[i].qt = qt;
-
-    i === recipeState.ingredients.length - 1 ? (i = 0) : i++;
-  }
-
-  if (unit !== undefined) {
-    recipeState.ingredients[i].unit = unit;
-    i === recipeState.ingredients.length - 1 ? (i = 0) : i++;
-  }
+  return {
+    string: object.extractedString,
+    type: slicedType,
+    nutrition: slicedNutrition,
+    time: slicedTime,
+    servings: slicedServings,
+    images: slicedImages,
+    title: slicedTitle,
+    ingredients: slicedIngredients,
+    cookware: slicedCookware,
+  };
 };
 
 export const convertSteps = function (string, state) {
@@ -192,6 +129,11 @@ export const convertSteps = function (string, state) {
       ? recipeState.steps.push(step)
       : '';
   });
+};
+
+export const saveRecipeName = function (dataArr) {
+  const slicedName = dataArr[0].slice(2, dataArr[0].length).trim();
+  recipeState.recipeName = slicedName;
 };
 
 export const pushToRecipeHolder = function (state) {

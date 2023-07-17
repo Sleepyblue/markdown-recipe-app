@@ -1,0 +1,26 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr 1fr;
+  grid-template-rows: 0.15fr 1.85fr;
+  grid-template-areas:
+    "Input Searchbar Preview"
+    "Navigation List Preview";
+
+  & > header {
+    grid-column: Input / Searchbar;
+  }
+
+  & > nav {
+    grid-area: Navigation;
+  }
+
+  & > main {
+    grid-area: List;
+  }
+
+  & > article {
+    grid-area: Preview;
+  }
+}

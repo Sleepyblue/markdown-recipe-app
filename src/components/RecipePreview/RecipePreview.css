@@ -1,0 +1,6 @@
+@import url("../../index.css");
+
+.recipe-preview {
+  height: 100%;
+  background-color: var(--background-secondary);
+}
