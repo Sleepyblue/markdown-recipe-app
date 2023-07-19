@@ -7,13 +7,16 @@
   grid-template-areas:
     "Input Searchbar Preview"
     "Navigation List Preview";
+  background-color: var(--background);
 
   & > header {
     grid-column: Input / Searchbar;
+    border-bottom: 2px solid var(--tertiary);
   }
 
   & > nav {
     grid-area: Navigation;
+    border-right: 2px solid var(--tertiary);
   }
 
   & > main {
@@ -22,5 +25,6 @@
 
   & > article {
     grid-area: Preview;
+    border-left: 2px solid var(--tertiary);
   }
 }
