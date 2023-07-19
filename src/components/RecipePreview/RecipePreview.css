@@ -2,5 +2,20 @@
 
 .recipe-preview {
   height: 100%;
-  background-color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary);
+
+  & > header,
+  & > main {
+    height: 100%;
+  }
+
+  & > header {
+    flex: 0.075 1 0;
+  }
+
+  & > main {
+    flex: 0.925 1 0;
+  }
 }

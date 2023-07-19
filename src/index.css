@@ -1,6 +1,15 @@
 :root {
+  --primary: #fe8252;
+  --secondary: #f0f5f5;
+  --tertiary: #e1e7e9;
   --background: #fff;
-  --background-secondary: #f0f5f5;
+}
+
+[data-theme="dark"] {
+  --primary: #fed852;
+  --secondary: #423b47;
+  --tertiary: #323137;
+  --background: #161319;
 }
 
 * {
