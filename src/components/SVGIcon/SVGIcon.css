@@ -1,0 +1,18 @@
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  & > svg {
+    transition: transform 0.1s ease-out;
+  }
+
+  &:hover > svg,
+  &:active > svg {
+    color: var(--primary);
+  }
+
+  &:active > svg {
+    transform: translateY(1px) scale(0.95);
+  }
+}

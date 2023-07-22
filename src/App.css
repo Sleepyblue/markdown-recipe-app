@@ -12,6 +12,12 @@
   & > header {
     grid-column: Input / Searchbar;
     border-bottom: 2px solid var(--tertiary);
+
+    /* provisory */
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 20px;
   }
 
   & > nav {
