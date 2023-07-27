@@ -19,7 +19,7 @@ export function useDynamicSvg(iconName: string) {
         ).ReactComponent;
       } catch (err) {
         setError(err);
-        console.error(err);
+        // console.error(err);
       } finally {
         setLoading(false);
       }
