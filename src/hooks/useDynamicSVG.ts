@@ -27,6 +27,5 @@ export function useDynamicSvg(iconName: string) {
 
     void importSvgIcon();
   }, [iconName]);
-
   return { error, loading, SvgIcon: importedIconRef.current };
 }
