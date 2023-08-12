@@ -1,9 +1,16 @@
 import "./Modal.css";
+import SVGIcon from "./../SVGIcon";
 
-export default function Modal() {
+type handlerFunctionType = {
+  handleModal: VoidFunction;
+};
+
+export default function Modal({ handleModal }: handlerFunctionType) {
   return (
     <div className="modal">
-      <p>Hello Modal</p>
+      <button onClick={handleModal}>
+        <SVGIcon iconName="Close" size={32} iconClass="icon" />
+      </button>
     </div>
   );
 }

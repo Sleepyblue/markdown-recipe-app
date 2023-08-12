@@ -1,10 +1,33 @@
 .modal {
+  display: grid;
+  grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.7fr);
+  grid-template-rows: 1fr;
   position: absolute;
-  width: 300px;
-  height: 200px;
+  width: 600px;
+  height: 300px;
   top: 50%;
   left: 50%;
-  background-color: var(--tertiary);
+  background-color: var(--background);
   color: var(--primary);
   transform: translate(-50%, -50%);
+  border-radius: 12px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+
+  & button {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    &:active {
+      transform: translateY(1px) scale(0.95);
+    }
+
+    & svg {
+      color: var(--primary);
+    }
+  }
 }
