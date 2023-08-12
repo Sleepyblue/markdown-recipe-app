@@ -2,11 +2,12 @@ import { useDynamicSvg } from "../../hooks/useDynamicSVG.ts";
 import "./SVGIcon.css";
 
 type IconButtonProps = {
-  iconName: "Cogwheel" | "";
+  iconName: "Cogwheel" | "Close" | "";
   size: number;
+  iconClass?: string;
 };
 
-function SVGIcon({ iconName, size }: IconButtonProps) {
+function SVGIcon({ iconName, size, iconClass }: IconButtonProps) {
   const { loading, SvgIcon } = useDynamicSvg(iconName);
 
   return (
@@ -30,7 +31,7 @@ function SVGIcon({ iconName, size }: IconButtonProps) {
           </svg>
         </div>
       )}
-      {SvgIcon && <SvgIcon width={size} height={size} />}
+      {SvgIcon && <SvgIcon width={size} height={size} className={iconClass} />}
     </>
   );
 }

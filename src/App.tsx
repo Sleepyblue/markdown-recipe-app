@@ -8,15 +8,14 @@ import Modal from "./components/Modal";
 function App() {
   const [modalStatus, setModalStatus] = useState<boolean>(false);
 
-  function modalHandler() {
+  function handleModal() {
     setModalStatus(!modalStatus);
-    console.log(modalStatus);
   }
 
   return (
     <>
       <header>
-        <button className="icon-button" onClick={modalHandler}>
+        <button className="icon-button" onClick={handleModal}>
           <SVGIcon iconName="Cogwheel" size={36} />
         </button>
       </header>
@@ -25,7 +24,8 @@ function App() {
       <article>
         <RecipePreview />
       </article>
-      {modalStatus && createPortal(<Modal />, document.body)}
+      {modalStatus &&
+        createPortal(<Modal handleModal={handleModal} />, document.body)}
     </>
   );
 }
