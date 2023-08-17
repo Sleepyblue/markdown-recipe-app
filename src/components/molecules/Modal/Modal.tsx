@@ -1,5 +1,5 @@
 import "./Modal.css";
-import SVGIcon from "./../SVGIcon";
+import SVGIcon from "../../atoms/SVGIcon";
 
 type handlerFunctionType = {
   handleModal: VoidFunction;

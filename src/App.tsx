@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import "./App.css";
-import RecipePreview from "./components/RecipePreview";
-import SVGIcon from "./components/SVGIcon";
-import Modal from "./components/Modal";
+import RecipePreview from "./components/organism/RecipePreview";
+import SVGIcon from "./components/atoms/SVGIcon";
+import Modal from "./components/molecules/Modal";
 
 function App() {
   const [modalStatus, setModalStatus] = useState<boolean>(false);
