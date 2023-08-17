@@ -1,4 +1,4 @@
-import { useDynamicSvg } from "../../hooks/useDynamicSVG.ts";
+import { useDynamicSvg } from "../../../hooks/useDynamicSVG.ts";
 import "./SVGIcon.css";
 
 type IconButtonProps = {
