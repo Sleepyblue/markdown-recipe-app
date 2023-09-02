@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom";
 import "./ModalButton.css";
 
 type modalButtonProps = {
+  to: string;
   name: string;
   buttonClass: string;
 };
 
-function ModalButton({ name, buttonClass }: modalButtonProps) {
+function ModalButton({ to, name, buttonClass }: modalButtonProps) {
   return (
     <button className={buttonClass}>
-      <p>{name}</p>
+      <Link to={to}>{name}</Link>
     </button>
   );
 }
