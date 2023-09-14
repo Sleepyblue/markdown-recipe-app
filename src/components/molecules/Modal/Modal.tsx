@@ -9,7 +9,6 @@ type handlerFunctionType = {
 
 export default function Modal({ handleModal }: handlerFunctionType) {
   return (
-    /* WORKING ON HERE */
     <div className="modal">
       <div className="settings-menu">
         <ModalButton
@@ -23,9 +22,7 @@ export default function Modal({ handleModal }: handlerFunctionType) {
           buttonClass="theme-button"
         />
       </div>
-      <button onClick={handleModal}>
-        <SVGIcon iconName="Close" size={32} iconClass="icon" />
-      </button>
+
       <div className="settings-options">
         <Routes>
           <Route
@@ -56,7 +53,9 @@ export default function Modal({ handleModal }: handlerFunctionType) {
           />
         </Routes>
       </div>
+      <button onClick={handleModal}>
+        <SVGIcon iconName="Close" size={32} iconClass="icon" />
+      </button>
     </div>
-    /* WORKING ON HERE */
   );
 }
