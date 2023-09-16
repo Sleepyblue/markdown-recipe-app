@@ -4,6 +4,7 @@ import "./App.css";
 import RecipePreview from "./components/organism/RecipePreview";
 import SVGIcon from "./components/atoms/SVGIcon";
 import Modal from "./components/molecules/Modal";
+import handleTheme from "./utility/handleTheme";
 
 function App() {
   const [modalStatus, setModalStatus] = useState<boolean>(false);
@@ -11,6 +12,8 @@ function App() {
   function handleModal() {
     setModalStatus(!modalStatus);
   }
+
+  handleTheme();
 
   return (
     <>
