@@ -6,10 +6,10 @@
 }
 
 [data-theme="dark"] {
-  --primary: #fed852;
-  --secondary: #423b47;
-  --tertiary: #323137;
-  --background: #161319;
+  --primary: #e7c69b;
+  --secondary: #1e1e1e;
+  --tertiary: #191919;
+  --background: #232323;
 }
 
 * {
