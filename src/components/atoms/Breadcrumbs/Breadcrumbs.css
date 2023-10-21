@@ -1,0 +1,50 @@
+.bread {
+  display: flex;
+  font-family: "Courier New", Courier, monospace;
+  gap: 8px;
+
+  & > li {
+    list-style: none;
+    color: #fff;
+
+    &:not(:first-child)::before {
+      content: " / ";
+      margin: 0 0.5em;
+    }
+  }
+
+  & a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+.bread-button {
+  position: relative;
+  background-color: var(--tertiary);
+  color: #fff;
+  border: 1px solid var(--background);
+  border-radius: 3px;
+  min-width: 40px;
+  max-width: 50px;
+  font-weight: 400;
+}
+
+.bread-drop {
+  position: absolute;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: var(--tertiary);
+  transform: translate(0, 6px);
+
+  & > li {
+    list-style: none;
+    color: #fff;
+    border-radius: 3px;
+    padding: 4px;
+  }
+}
